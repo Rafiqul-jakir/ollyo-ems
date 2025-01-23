@@ -27,8 +27,8 @@ if (isset($_SESSION['id'])) {
 <body>
   <div id="wrapper">
     <nav class="navbar header-top fixed-top navbar-expand-lg  navbar-dark bg-dark">
-      <div class="container">
-        <a class="navbar-brand" href="#">LOGO</a>
+      <div class="container-fluid">
+        <a class="navbar-brand" href="../../index.php" target="_blank">Event Manager</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText"
           aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -63,22 +63,25 @@ if (isset($_SESSION['id'])) {
               <button type="button" class="btn btn-primary mb-4 text-center float-right" id="createEventButton" data-toggle="modal" data-target="#eventModal">
                 Create Event
               </button>
-              <table class="table text-center" id="allEventsTable">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Title</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">Max Attendee</th>
-                    <th scope="col">Enroll Attendee</th>
-                    <th scope="col">Date</th>
-                    <th scope="col">Time</th>
-                    <th scope="col">Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                </tbody>
-              </table>
+              <div class="table-responsive">
+                <table class="table text-center" id="allEventsTable">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Title</th>
+                      <th scope="col">Description</th>
+                      <th scope="col">Max Attendee</th>
+                      <th scope="col">Enroll Attendee</th>
+                      <th scope="col">Date</th>
+                      <th scope="col">Time</th>
+                      <th scope="col">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- Data will be dynamically inserted here using AJAX -->
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>
@@ -154,6 +157,7 @@ if (isset($_SESSION['id'])) {
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/1a6a4e9de4.js" crossorigin="anonymous"></script>
 
     <script type="text/javascript">
       $(document).ready(function() {
@@ -278,6 +282,7 @@ if (isset($_SESSION['id'])) {
                       <td>
                         <a class="btn btn-warning event-edit btn-sm" data-id="${valueOfElement.id}">Edit</a>
                         <a class="btn btn-danger text-white event-delete btn-sm" data-id="${valueOfElement.id}">Delete</a>
+                        <a class="btn btn-success text-white btn-sm" href="csv.php?eventid=${valueOfElement.id}" title="Download CSV"><i class="fas fa-download"></i></a>
                       </td>
                     </tr>
                   `);

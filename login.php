@@ -31,14 +31,20 @@ if (isset($_POST['register'])) {
     }
     $password = password_hash($_POST['registerPassword'], PASSWORD_DEFAULT);
 
-    $query = "INSERT INTO `users`(`name`, `email`, `password`, `role`) VALUES (:name,:email,:password,:role)";
-    $arr = [
-        ":name" => $name,
-        ":email" => $email,
-        ":password" => $password,
-        ":role" => "user",
-    ];
-    $app->register($query, $arr, "login.php");
+    $emailCheck = $app->selectOne("SELECT email from users where email = '$email'");
+
+    if (!empty($emailCheck->email)) {
+        echo "<script>alert('This email already has an account')</script>";
+    } else {
+        $query = "INSERT INTO `users`(`name`, `email`, `password`, `role`) VALUES (:name,:email,:password,:role)";
+        $arr = [
+            ":name" => $name,
+            ":email" => $email,
+            ":password" => $password,
+            ":role" => "user",
+        ];
+        $app->register($query, $arr, "login.php");
+    }
 }
 
 ?>
@@ -93,11 +99,11 @@ if (isset($_POST['register'])) {
                         <form method="POST" action="login.php">
                             <div class="mb-3">
                                 <label for="loginEmail" class="form-label">Email address</label>
-                                <input type="email" class="form-control" name="loginEmail" id="loginEmail" placeholder="Enter your email">
+                                <input type="email" class="form-control" name="loginEmail" id="loginEmail" placeholder="Enter your email" required>
                             </div>
                             <div class="mb-3">
                                 <label for="loginPassword" class="form-label">Password</label>
-                                <input type="password" class="form-control" name="loginPassword" id="loginPassword" placeholder="Enter your password">
+                                <input type="password" class="form-control" name="loginPassword" id="loginPassword" placeholder="Enter your password" required>
                             </div>
                             <button type="submit" name="login" class="btn btn-primary w-100">Login</button>
                         </form>

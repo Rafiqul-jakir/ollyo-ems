@@ -30,8 +30,8 @@ if (isset($_SESSION['id'])) {
 <body>
   <div id="wrapper">
     <nav class="navbar header-top fixed-top navbar-expand-lg  navbar-dark bg-dark">
-      <div class="container">
-        <a class="navbar-brand" href="#">LOGO</a>
+      <div class="container-fluid">
+        <a class="navbar-brand" href="../../index.php" target="_blank">Event Manager</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText"
           aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -86,6 +86,7 @@ if (isset($_SESSION['id'])) {
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="https://kit.fontawesome.com/1a6a4e9de4.js" crossorigin="anonymous"></script>
 
   <script type="text/javascript">
     $(document).ready(function() {
