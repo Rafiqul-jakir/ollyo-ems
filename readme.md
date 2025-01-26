@@ -65,6 +65,28 @@ The goal of this project is to provide a streamlined platform for event organize
 ## Installation and Setup Instructions
 
 1. **Clone the Repository:**
+
    ```bash
    git clone https://github.com/Rafiqul-jakir/ollyo-ems
    ```
+
+2. **Relocate to the htdocs Folder:**
+
+- Move the cloned folder (ollyo-ems) to the htdocs directory of your local server (e.g., XAMPP or WAMP).
+- Rename the folder to ems (if not already named so).
+- Access the project via http://localhost/ems/ in your browser.
+
+3. **Set Up the Database:**
+
+- Locate the events_db.sql file in the ems folder.
+- Open phpMyAdmin and create a new database named events_db.
+- Import the events_db.sql file into the events_db database.
+
+4. **Run the Project:**
+
+- Start your local server (Apache and MySQL) through XAMPP or related software.
+- Navigate to http://localhost/ems/ in your browser to access the application.
+
+5. **Login to the System:**
+
+- Use the provided credentials or create a new account for testing.
