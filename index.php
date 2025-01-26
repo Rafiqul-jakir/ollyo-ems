@@ -156,11 +156,13 @@ if (isset($_SESSION['id'])) {
                     type: 'POST',
                     data: $(this).serialize(), // Serialize form Data
                     success: function(response) {
-                        if (response == 'success') {
+                        console.log(response);
+
+                        if (response.status == 'success') {
                             $("#eventCreatedMessage")
                                 .addClass("text-success")
                                 .removeClass('text-danger')
-                                .text("Event Booked successfully!")
+                                .text(response.message)
                                 .show()
                                 .delay(2300)
                                 .fadeOut(function() {
@@ -170,7 +172,7 @@ if (isset($_SESSION['id'])) {
                                 });
 
                         } else {
-                            $("#eventCreatedMessage").addClass("text-danger").removeClass('text-success').text("Something is wrong !").show()
+                            $("#eventCreatedMessage").addClass("text-danger").removeClass('text-success').text(response.message).show()
                                 .delay(2300)
                                 .fadeOut();
                         }
