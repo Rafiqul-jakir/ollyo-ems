@@ -10,6 +10,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $createdBy = htmlspecialchars(trim($_POST['createdBy']));
     $eventId = htmlspecialchars(trim($_POST['eventId']));
 
+    header('Content-Type: application/json');
+    // Validate inputs
+    if (empty($title) || empty($eventDescription) || empty($totalAttendee) || empty($eventDate) || empty($eventTime)) {
+        echo json_encode(["status" => "error", "message" => "Missing required fields."]);
+        exit;
+    }
     if (empty($eventId)) {
         $query = "INSERT INTO `events`(`title`, `description`, `max_capacity`, `event_date`, `time`, `created_by`) VALUES (:title, :description, :max_capacity, :event_date, :time, :created_by )";
         $arr = [
@@ -24,9 +30,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         try {
             $register_event = $app->link->prepare($query);
             $register_event->execute($arr);
-            echo "success";
+            echo json_encode(["status" => "success", "message" => "Event created successfully !"]);
         } catch (Exception $e) {
-            echo "insert failed";
+            echo json_encode(["status" => "error", "message" => "Event not created !"]);
         }
     } else {
 
@@ -43,9 +49,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         try {
             $update_event = $app->link->prepare($query);
             $update_event->execute($arr);
-            echo "updated-success";
+            echo json_encode(["status" => "success", "message" => "Event updated successfully !"]);
         } catch (Exception $e) {
-            echo $e;
+            echo json_encode(["status" => "success", "message" => "Event not updated !"]);
         }
     }
 }
