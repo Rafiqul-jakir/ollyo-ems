@@ -309,7 +309,7 @@ if (isset($_SESSION['id'])) {
         $('#eventTime').val(time24hr);
         $("#eventId").val(eventId);
         // Show the modal
-        $('#eventModal').modal('show');
+        $('#createEventModal').modal('show');
       });
 
       // in initial  call
@@ -373,20 +373,24 @@ if (isset($_SESSION['id'])) {
         success: function(response) {
           if (response.message == "success") {
             $("#allEventsTable tbody").empty();
+            let counter = 0;
             $.each(response.data, function(indexInArray, valueOfElement) {
+              counter++;
               $("#allEventsTable tbody").append(`
                     <tr>
-                      <td>${valueOfElement.id}</td>
-                      <td><a href="#" data-event_id = "${valueOfElement.id}" data-toggle="modal" data-target="#attendeeInfo" class="getAttendeeInfo">${valueOfElement.title}</a></td>
-                      <td>${valueOfElement.description}</td>
-                      <td>${valueOfElement.max_capacity}</td>
-                       <td>${valueOfElement.enroll_attendee}</td>
-                      <td>${valueOfElement.event_date}</td>
-                      <td>${valueOfElement.time}</td>
-                      <td>
+                      <td class="align-middle">${counter}</td>
+                      <td class="align-middle"><a href="#" data-event_id = "${valueOfElement.id}" data-toggle="modal" data-target="#attendeeInfo" class="getAttendeeInfo">${valueOfElement.title}</a></td>
+                      <td class="align-middle">${valueOfElement.description}</td>
+                      <td class="align-middle">${valueOfElement.max_capacity}</td>
+                      <td class="align-middle">${valueOfElement.enroll_attendee}</td>
+                      <td class="align-middle">${valueOfElement.event_date}</td>
+                      <td class="align-middle">${valueOfElement.time}</td>
+                      <td class="align-middle">
+                      <div class="d-flex">
                         <a class="btn btn-warning event-edit btn-sm" data-id="${valueOfElement.id}">Edit</a>
-                        <a class="btn btn-danger text-white event-delete btn-sm" data-id="${valueOfElement.id}">Delete</a>
+                        <a class="btn btn-danger text-white event-delete btn-sm mr-1 ml-1" data-id="${valueOfElement.id}">Delete</a>
                         <a class="btn btn-success text-white btn-sm" href="csv.php?eventid=${valueOfElement.id}" title="Download CSV"><i class="fas fa-download"></i></a>
+                        </div>
                       </td>
                     </tr>
                   `);
