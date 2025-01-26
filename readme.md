@@ -1,54 +1,70 @@
 # Event Management System
 
+A simple web-based Event Management System built using pure PHP and MySQL, designed to allow users to create, manage, and view events, as well as register attendees and generate event reports.
+
 ## Live Project Link
 
-[ollyo.rf.gd](http://ollyo.rf.gd)
+[Event Management System](http://ollyo.rf.gd)
 
-## Login Credentials
+### Login Credentials for Testing
 
-- **Email**: abc@gmail.com
-- **Password**: 1234
+- **Email:** abc@gmail.com
+- **Password:** 1234
+
+---
 
 ## Project Overview
 
-The **Event Management System** is a web-based platform designed to simplify the process of creating, managing, and viewing events. It allows users to register for events, manage attendee lists, and generate event reports.
-
 ### Objective
 
-The goal of this project is to provide a user-friendly system for organizing events, registering attendees, and managing event details. Users can create and manage events, while admins can download reports and monitor registrations.
+The goal of this project is to provide a streamlined platform for event organizers to manage events, register attendees, and access event reports efficiently.
 
-## Core Functionalities
+### Core Functionalities
 
-1. **User Authentication**:
+1. **User Authentication:**
 
-   - Secure user login and registration with hashed passwords.
+   - Secure login and registration using password hashing.
 
-2. **Event Management**:
+2. **Event Management:**
 
-   - Authenticated users can create, update, view, and delete events, with details like event name and description.
+   - Authenticated users can create, update, view, and delete events.
+   - Event details include name and description.
 
-3. **Attendee Registration**:
+3. **Attendee Registration:**
 
-   - A registration form that allows attendees to register for events, ensuring the number of registrations does not exceed the event's capacity.
+   - Users can register for events through a form.
+   - Registration is capped at the maximum event capacity.
 
-4. **Event Dashboard**:
+4. **Event Dashboard:**
 
-   - A dashboard displaying events in a sortable, filterable, and paginated format.
+   - Events are displayed in a paginated, sortable, and filterable format for easy navigation.
 
-5. **Event Reports**:
+5. **Event Reports:**
    - Admins can download attendee lists for specific events in CSV format.
+
+---
 
 ## Technical Requirements
 
-- **Backend**: Pure PHP (no frameworks).
-- **Database**: MySQL.
-- **Validation**: Both client-side and server-side validation.
-- **Security**: Use of prepared statements to prevent SQL injection.
-- **UI**: A basic, responsive UI using frameworks like Bootstrap.
+- **Backend:** Developed using pure PHP (no frameworks).
+- **Database:** MySQL is used for data storage.
+- **Validation:** Includes both client-side and server-side validation.
+- **Security:** Prepared statements are used to prevent SQL injection.
+- **Frontend:** A basic responsive UI built using Bootstrap.
 
-## Setup Instructions
+---
 
-1. **Clone the Repository**
+## Bonus Features (Optional)
+
+- **Search Functionality:** Search events and attendees easily.
+- **AJAX Integration:** Enhanced user experience during event registration.
+- **JSON API:** A dedicated API endpoint for fetching event details programmatically.
+
+---
+
+## Installation and Setup Instructions
+
+1. **Clone the Repository:**
    ```bash
-   git clone https://github.com/yourusername/Event-Management-System.git
+   git clone https://github.com/Rafiqul-jakir/ollyo-ems
    ```
