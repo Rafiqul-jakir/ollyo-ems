@@ -8,6 +8,8 @@ A simple web-based Event Management System built using pure PHP and MySQL, desig
 
 ### Login Credentials for Testing
 
+- **Home Page:** [https://ollyo.cyberwall360.com/](https://ollyo.cyberwall360.com/)
+- **Login Page:** [https://ollyo.cyberwall360.com/login.php](https://ollyo.cyberwall360.com/login.php)
 - **Email:** abc@gmail.com
 - **Password:** 1234
 

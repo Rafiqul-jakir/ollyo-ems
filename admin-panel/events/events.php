@@ -71,19 +71,23 @@ if (isset($_SESSION['id'])) {
                   </button>
                 </div>
               </div>
-
+              <div class="row">
+                <div class="col-12">
+                  <input type="text" id="search-box" class="form-control mb-2" placeholder="Search by title...">
+                </div>
+              </div>
               <div class="table-responsive">
                 <table class="table table-bordered table-hover text-center" id="allEventsTable">
                   <thead class="thead-light">
                     <tr>
-                      <th scope="col">#</th>
-                      <th scope="col">Title</th>
-                      <th scope="col">Description</th>
-                      <th scope="col">Max Attendee</th>
-                      <th scope="col">Enroll Attendee</th>
-                      <th scope="col">Date</th>
-                      <th scope="col">Time</th>
-                      <th scope="col">Action</th>
+                      <th scope="col" class="align-middle">#</th>
+                      <th scope="col" class="align-middle">Title</th>
+                      <th scope="col" class="align-middle">Description</th>
+                      <th scope="col" class="align-middle">Max Attendee</th>
+                      <th scope="col" class="align-middle">Enroll Attendee</th>
+                      <th scope="col" class="align-middle">Date</th>
+                      <th scope="col" class="align-middle">Time</th>
+                      <th scope="col" class="align-middle">Action</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -102,7 +106,7 @@ if (isset($_SESSION['id'])) {
           <div class="modal-content">
             <!-- Modal Header -->
             <div class="modal-header">
-              <h5 class="modal-title" id="createEventModalLabel">Create New Event</h5>
+              <h5 class="modal-title" id="createEventModalLabel"></h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -227,6 +231,19 @@ if (isset($_SESSION['id'])) {
 
   <script type="text/javascript">
     $(document).ready(function() {
+      // search 
+      $('#search-box').on('keyup', function() {
+        var value = $(this).val().toLowerCase(); // Get search value and convert to lowercase
+        $('#allEventsTable tbody tr').filter(function() {
+          // Toggle row visibility based on match
+          $(this).toggle($(this).find('td:nth-child(2)').text().toLowerCase().indexOf(value) > -1);
+        });
+      });
+
+      $("#createEventButton").on('click', function() {
+        $("#createEventModalLabel").text("Create New Event");
+        $('#eventRegister').trigger('reset');
+      });
       $('#eventRegister').submit(function(event) {
         event.preventDefault(); // Prevent default form submission
 
@@ -288,7 +305,7 @@ if (isset($_SESSION['id'])) {
         let totalAttendee = row.find("td:eq(3)").text();
         let eventDate = row.find("td:eq(5)").text();
         let eventTime = row.find("td:eq(6)").text();
-
+        $("#createEventModalLabel").text("Edit event");
         //Change date format
         var date = new Date(eventDate);
         var year = date.getFullYear();
